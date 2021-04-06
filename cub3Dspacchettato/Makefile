@@ -44,7 +44,7 @@ $(NAME):	$(OBJCS)
 			@$(MAKE) -C ./mlx > /dev/null
 			@cp ./mlx/libmlx.dylib ./
 			@echo "\033[33m[COMPILING CUB3D ...]"
-			@gcc $(CFLAGS) -o $(NAME) $(OBJCS) $(MLX_F)
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJCS) $(MLX_F)
 			@echo "\x1b[32;01m[DONE!]"
 
 run:		$(NAME)

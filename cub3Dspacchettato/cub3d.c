@@ -12,9 +12,9 @@
 
 #include "cub3d.h"
 
-int		*ft_colorinit(int *color)
+int	*ft_colorinit(int *color)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)
@@ -84,7 +84,7 @@ void	listinit(t_parse *parsing)
 // 	printf("\n");
 // }
 
-int		ft_exit(win_data *win)
+int	ft_exit(t_win_data *win)
 {
 	mlx_destroy_image(win->mlx_ptr, win->text[0].img);
 	mlx_destroy_image(win->mlx_ptr, win->text[1].img);
@@ -97,78 +97,78 @@ int		ft_exit(win_data *win)
 	return (0);
 }
 
-void	move_up(win_data *win, double movespeed)
+void	move_up(t_win_data *win, double movespeed)
 {
-	if (win->map[(int)(win->rayc.posy + win->rayc.diry * movespeed)]
+	if (win->map[(int)(win->rayc.posy + win->rayc.diry * movespeed)] \
 	[(int)win->rayc.posx] == '0')
 		win->rayc.posy += win->rayc.diry * movespeed;
-	if (win->map[(int)(win->rayc.posy)]
+	if (win->map[(int)(win->rayc.posy)] \
 	[(int)(win->rayc.posx + win->rayc.dirx * movespeed)] == '0')
 		win->rayc.posx += win->rayc.dirx * movespeed;
 }
 
-void	move_down(win_data *win, double movespeed)
+void	move_down(t_win_data *win, double movespeed)
 {
-	if (win->map[(int)(win->rayc.posy - win->rayc.diry * movespeed)]
+	if (win->map[(int)(win->rayc.posy - win->rayc.diry * movespeed)] \
 	[(int)(win->rayc.posx)] == '0')
 		win->rayc.posy -= win->rayc.diry * movespeed;
-	if (win->map[(int)(win->rayc.posy)]
+	if (win->map[(int)(win->rayc.posy)] \
 	[(int)(win->rayc.posx - win->rayc.dirx * movespeed)] == '0')
 		win->rayc.posx -= win->rayc.dirx * movespeed;
 }
 
-void	rotate_left(win_data *win, double rotspeed)
+void	rotate_left(t_win_data *win, double rotspeed)
 {
 	win->rayc.olddirx = win->rayc.dirx;
-	win->rayc.dirx = win->rayc.dirx * cos(rotspeed)
-	- win->rayc.diry * sin(rotspeed);
-	win->rayc.diry = win->rayc.olddirx * sin(rotspeed)
-	+ win->rayc.diry * cos(rotspeed);
+	win->rayc.dirx = win->rayc.dirx * cos(rotspeed) \
+	 - win->rayc.diry * sin(rotspeed);
+	win->rayc.diry = win->rayc.olddirx * sin(rotspeed) \
+	 + win->rayc.diry * cos(rotspeed);
 	win->rayc.oldplanex = win->rayc.planex;
-	win->rayc.planex = win->rayc.planex * cos(rotspeed)
-	- win->rayc.planey * sin(rotspeed);
-	win->rayc.planey = win->rayc.oldplanex * sin(rotspeed)
-	+ win->rayc.planey * cos(rotspeed);
+	win->rayc.planex = win->rayc.planex * cos(rotspeed) \
+	 - win->rayc.planey * sin(rotspeed);
+	win->rayc.planey = win->rayc.oldplanex * sin(rotspeed) \
+	 + win->rayc.planey * cos(rotspeed);
 }
 
-void	rotate_right(win_data *win, double rotspeed)
+void	rotate_right(t_win_data *win, double rotspeed)
 {
 	win->rayc.olddirx = win->rayc.dirx;
-	win->rayc.dirx = win->rayc.dirx * cos(-rotspeed)
-	- win->rayc.diry * sin(-rotspeed);
-	win->rayc.diry = win->rayc.olddirx * sin(-rotspeed)
-	+ win->rayc.diry * cos(-rotspeed);
+	win->rayc.dirx = win->rayc.dirx * cos(-rotspeed) \
+	 - win->rayc.diry * sin(-rotspeed);
+	win->rayc.diry = win->rayc.olddirx * sin(-rotspeed) \
+	 + win->rayc.diry * cos(-rotspeed);
 	win->rayc.oldplanex = win->rayc.planex;
-	win->rayc.planex = win->rayc.planex * cos(-rotspeed)
-	- win->rayc.planey * sin(-rotspeed);
-	win->rayc.planey = win->rayc.oldplanex * sin(-rotspeed)
-	+ win->rayc.planey * cos(-rotspeed);
+	win->rayc.planex = win->rayc.planex * cos(-rotspeed) \
+	 - win->rayc.planey * sin(-rotspeed);
+	win->rayc.planey = win->rayc.oldplanex * sin(-rotspeed) \
+	 + win->rayc.planey * cos(-rotspeed);
 }
 
-void	move_left(win_data *win, double movespeed)
+void	move_left(t_win_data *win, double movespeed)
 {
-	if (win->map[(int)(win->rayc.posy)]
+	if (win->map[(int)(win->rayc.posy)] \
 	[(int)(win->rayc.posx + win->rayc.diry * movespeed)] == '0')
 		win->rayc.posx += win->rayc.diry * movespeed;
-	if (win->map[(int)(win->rayc.posy - win->rayc.dirx * movespeed)]
+	if (win->map[(int)(win->rayc.posy - win->rayc.dirx * movespeed)] \
 	[(int)(win->rayc.posx)] == '0')
 		win->rayc.posy -= win->rayc.dirx * movespeed;
 }
 
-void	move_right(win_data *win, double movespeed)
+void	move_right(t_win_data *win, double movespeed)
 {
-	if (win->map[(int)(win->rayc.posy)]
+	if (win->map[(int)(win->rayc.posy)] \
 	[(int)(win->rayc.posx - win->rayc.diry * movespeed)] == '0')
 		win->rayc.posx -= win->rayc.diry * movespeed;
-	if (win->map[(int)(win->rayc.posy + win->rayc.dirx * movespeed)]
+	if (win->map[(int)(win->rayc.posy + win->rayc.dirx * movespeed)] \
 	[(int)(win->rayc.posx)] == '0')
 		win->rayc.posy += win->rayc.dirx * movespeed;
 }
 
-void	player_move(win_data *win)
+void	player_move(t_win_data *win)
 {
-	double movespeed;
-	double rotspeed;
+	double	movespeed;
+	double	rotspeed;
 
 	movespeed = 0.15;
 	rotspeed = 0.05;
@@ -186,16 +186,16 @@ void	player_move(win_data *win)
 		move_right(win, movespeed);
 }
 
-void	ft_keyinit(win_data *win)
+void	ft_keyinit(t_win_data *win)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 128)
 		win->keys[i++] = 0;
 }
 
-int		ft_keypress(int keycode, win_data *win)
+int	ft_keypress(int keycode, t_win_data *win)
 {
 	if (keycode == 53)
 		ft_exit(win);
@@ -216,7 +216,7 @@ int		ft_keypress(int keycode, win_data *win)
 	return (0);
 }
 
-int		ft_keyrelease(int keycode, win_data *win)
+int	ft_keyrelease(int keycode, t_win_data *win)
 {
 	if (keycode == 126 || keycode == 13)
 		win->keys[keycode] = 0;
@@ -235,10 +235,10 @@ int		ft_keyrelease(int keycode, win_data *win)
 	return (0);
 }
 
-void	ft_minimap(win_data *win)
+void	ft_minimap(t_win_data *win)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	x = 0;
@@ -266,7 +266,7 @@ void	ft_minimap(win_data *win)
 	(int)win->rayc.posy * win->img.size_pixel, 0x00FF00FF);
 }
 
-void	look_north(win_data *win, int y, int x)
+void	look_north(t_win_data *win, int y, int x)
 {
 	win->rayc.posx = x + 0.49;
 	win->rayc.posy = y + 0.49;
@@ -277,7 +277,7 @@ void	look_north(win_data *win, int y, int x)
 	win->map[y][x] = '0';
 }
 
-void	look_west(win_data *win, int y, int x)
+void	look_west(t_win_data *win, int y, int x)
 {
 	win->rayc.posx = x + 0.49;
 	win->rayc.posy = y + 0.49;
@@ -288,7 +288,7 @@ void	look_west(win_data *win, int y, int x)
 	win->map[y][x] = '0';
 }
 
-void	look_east(win_data *win, int y, int x)
+void	look_east(t_win_data *win, int y, int x)
 {
 	win->rayc.posx = x + 0.49;
 	win->rayc.posy = y + 0.49;
@@ -299,7 +299,7 @@ void	look_east(win_data *win, int y, int x)
 	win->map[y][x] = '0';
 }
 
-void	look_south(win_data *win, int y, int x)
+void	look_south(t_win_data *win, int y, int x)
 {
 	win->rayc.posx = x + 0.49;
 	win->rayc.posy = y + 0.49;
@@ -310,10 +310,10 @@ void	look_south(win_data *win, int y, int x)
 	win->map[y][x] = '0';
 }
 
-void	ft_findplayer(win_data *win)
+void	ft_findplayer(t_win_data *win)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -338,11 +338,11 @@ void	ft_findplayer(win_data *win)
 	}
 }
 
-void	malloc_sprite(win_data *win)
+void	malloc_sprite(t_win_data *win)
 {
-	int i;
-	int x;
-	int y;
+	int	i;
+	int	x;
+	int	y;
 
 	i = 0;
 	x = 0;
@@ -366,7 +366,7 @@ void	malloc_sprite(win_data *win)
 	}
 }
 
-void	draw_dot(win_data *win, int x, int y, int color)
+void	draw_dot(t_win_data *win, int x, int y, int color)
 {
 	char	b;
 	char	g;
@@ -385,18 +385,18 @@ void	draw_dot(win_data *win, int x, int y, int color)
 	win->img.addr[i + 3] = 0;
 }
 
-void	count_sprites(win_data *win)
+void	count_sprites(t_win_data *win)
 {
 	win->rayc.i = 0;
 	while (win->rayc.i++ < win->countsprite)
-		win->spr[win->rayc.i].sprdis =
-		((win->rayc.posx - win->spr[win->rayc.i].posx)
-		* (win->rayc.posx - win->spr[win->rayc.i].posx) +
-		(win->rayc.posy - win->spr[win->rayc.i].posy)
-		* (win->rayc.posy - win->spr[win->rayc.i].posy));
+		win->spr[win->rayc.i].sprdis = \
+		((win->rayc.posx - win->spr[win->rayc.i].posx) \
+		 * (win->rayc.posx - win->spr[win->rayc.i].posx) + \
+		(win->rayc.posy - win->spr[win->rayc.i].posy) \
+		 * (win->rayc.posy - win->spr[win->rayc.i].posy));
 }
 
-void	sort_sprites(win_data *win)
+void	sort_sprites(t_win_data *win)
 {
 	t_sprite	tmp;
 	int			i;
@@ -423,7 +423,7 @@ void	sort_sprites(win_data *win)
 	}
 }
 
-// void		ft_pavicielo(win_data *win)
+// void		ft_pavicielo(t_win_data *win)
 // {
 // 	// int x;
 // 	// int y;
@@ -458,7 +458,7 @@ void	sort_sprites(win_data *win)
 // 	// }
 // }
 
-int		ft_rendering(win_data *win)
+int	ft_rendering(t_win_data *win)
 {
 	ft_raycasting(win);
 	if (win->save == 0)
@@ -472,9 +472,9 @@ int		ft_rendering(win_data *win)
 	return (0);
 }
 
-void	ft_checkxpm(win_data *win, int i)
+void	ft_checkxpm(t_win_data *win, int i)
 {
-	int j;
+	int	j;
 
 	j = ft_strlen(win->text[i].relative_path);
 	if (win->text[i].relative_path[j - 1] == 'm')
@@ -483,9 +483,9 @@ void	ft_checkxpm(win_data *win, int i)
 		win->text[i].xpm = 0;
 }
 
-void	init_textures(win_data *win)
+void	init_textures(t_win_data *win)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i <= 4)
@@ -497,18 +497,18 @@ void	init_textures(win_data *win)
 	while (i <= 4)
 	{
 		if (win->text[i].xpm == 1)
-			win->text[i].img = mlx_xpm_file_to_image(win->mlx_ptr,
+			win->text[i].img = mlx_xpm_file_to_image(win->mlx_ptr, \
 			win->text[i].relative_path, &win->text[i].w, &win->text[i].h);
 		else
-			win->text[i].img = mlx_png_file_to_image(win->mlx_ptr,
+			win->text[i].img = mlx_png_file_to_image(win->mlx_ptr, \
 			win->text[i].relative_path, &win->text[i].w, &win->text[i].h);
-		win->text[i].addr = (int *)mlx_get_data_addr(win->text[i].img,
+		win->text[i].addr = (int *)mlx_get_data_addr(win->text[i].img, \
 		&win->text[i].bpp, &win->text[i].line_length, &win->text[i].end);
 		i++;
 	}
 }
 
-void	ft_screensize(win_data *win)
+void	ft_screensize(t_win_data *win)
 {
 	mlx_get_screen_size(win->mlx_ptr,
 	&win->resolution.sizex, &win->resolution.sizey);
@@ -522,7 +522,7 @@ void	ft_screensize(win_data *win)
 		win->resy = 600;
 }
 
-void	init_window(win_data *win, t_parse *parsing)
+void	init_window(t_win_data *win, t_parse *parsing)
 {
 	win->map = parsing->map;
 	win->resx = parsing->resx;
@@ -534,30 +534,30 @@ void	init_window(win_data *win, t_parse *parsing)
 	win->text[2].relative_path = parsing->NO;
 	win->text[3].relative_path = parsing->SO;
 	win->text[4].relative_path = parsing->S;
-	win->color[0] = create_trgb(0, parsing->f_color[0],
+	win->color[0] = create_trgb(0, parsing->f_color[0], \
 	parsing->f_color[1], parsing->f_color[2]);
-	win->color[1] = create_trgb(0, parsing->c_color[0],
+	win->color[1] = create_trgb(0, parsing->c_color[0], \
 	parsing->c_color[1], parsing->c_color[2]);
 	win->countsprite = 0;
 	win->mlx_ptr = mlx_init();
 	win->img.img = mlx_new_image(win->mlx_ptr, win->resx, win->resy);
-	win->img.addr = mlx_get_data_addr(win->img.img,
+	win->img.addr = mlx_get_data_addr(win->img.img, \
 	&win->img.bpp, &win->img.line_length, &win->img.endian);
 	if (win->save == 0)
 	{
 		ft_screensize(win);
-		win->win_ptr = mlx_new_window(win->mlx_ptr,
+		win->win_ptr = mlx_new_window(win->mlx_ptr, \
 		win->resx, win->resy, "cub3D");
 	}
 }
 
-void	bmp_print(win_data *win, int fd)
+void	bmp_print(t_win_data *win, int fd)
 {
-	int		x;
-	int		y;
-	int		dst;
-	int		resx;
-	int		resy;
+	int	x;
+	int	y;
+	int	dst;
+	int	resx;
+	int	resy;
 
 	resx = (int)win->resx;
 	resy = (int)win->resy;
@@ -568,7 +568,7 @@ void	bmp_print(win_data *win, int fd)
 		x = 0;
 		while (x < resx)
 		{
-			dst = (*(int *)(win->img.addr +
+			dst = (*(int *)(win->img.addr + \
 			(y * win->img.line_length + (x * 4))));
 			write(fd, &dst, 4);
 			x++;
@@ -577,7 +577,7 @@ void	bmp_print(win_data *win, int fd)
 	}
 }
 
-void	bmp_header_2(win_data *win, int fd)
+void	bmp_header_2(t_win_data *win, int fd)
 {
 	int		plane;
 	int		color;
@@ -600,7 +600,7 @@ void	bmp_header_2(win_data *win, int fd)
 	write(fd, &color, 4);
 }
 
-void	bmp_header(win_data *win, int fd)
+void	bmp_header(t_win_data *win, int fd)
 {
 	int		filesize;
 	int		offset;
@@ -622,9 +622,9 @@ void	bmp_header(win_data *win, int fd)
 	write(fd, &resy, 4);
 }
 
-int		ft_bitmap(win_data *win)
+int	ft_bitmap(t_win_data *win)
 {
-	int fd;
+	int	fd;
 
 	fd = open("screenshot.bmp", O_CREAT | O_WRONLY, 00755);
 	bmp_header(win, fd);
@@ -634,11 +634,10 @@ int		ft_bitmap(win_data *win)
 	return (1);
 }
 
-void	init_save(win_data *win, t_parse *parsing, char **argv)
+void	init_save(t_win_data *win, t_parse *parsing, char **argv)
 {
 	ft_parsing_map(argv, parsing);
 	init_window(win, parsing);
-	//printstruct(parsing);
 	init_textures(win);
 	ft_findplayer(win);
 	malloc_sprite(win);
@@ -647,7 +646,7 @@ void	init_save(win_data *win, t_parse *parsing, char **argv)
 	ft_bitmap(win);
 }
 
-void	init_rayc(win_data *win, t_parse *parsing, char **argv)
+void	init_rayc(t_win_data *win, t_parse *parsing, char **argv)
 {
 	ft_parsing_map(argv, parsing);
 	init_window(win, parsing);
@@ -663,9 +662,9 @@ void	init_rayc(win_data *win, t_parse *parsing, char **argv)
 	mlx_loop(win->mlx_ptr);
 }
 
-int		save_check(char *arg, char *save)
+int	save_check(char *arg, char *save)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[i])
@@ -678,13 +677,13 @@ int		save_check(char *arg, char *save)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_parse		parsing;
-	win_data	win;
+	t_win_data	win;
 
-	if (argc == 3 && (ft_strnstr(argv[1], ".cub") == 1)
-	&& (ft_strlen(argv[2]) == 6 &&
+	if (argc == 3 && (ft_strnstr(argv[1], ".cub") == 1) \
+	 && (ft_strlen(argv[2]) == 6 && \
 	(ft_strnstr(argv[2], "--save") == 1)))
 	{
 		win.save = 1;
