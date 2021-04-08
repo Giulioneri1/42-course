@@ -19,7 +19,7 @@ SRCS	=	check_map.c \
 			mlx.c \
 			parsing_map.c \
 			parsing_res_4var.c \
-			parsing_S_F_C.c \
+			parsing_s_f_c.c \
 			raycasting.c \
 			error.c
 

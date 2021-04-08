@@ -14,15 +14,16 @@
 
 char	*fill_line(char *memory, char *line)
 {
-	int i;
-	int y;
+	int	i;
+	int	y;
 
 	i = 0;
 	if (!memory)
 		return (NULL);
 	while (memory[i] != '\n' && memory[i])
 		i++;
-	if (!(line = (char *)malloc(sizeof(char) * (i + 1))))
+	line = (char *)malloc(sizeof(char) * (i + 1));
+	if (!(line))
 		return (NULL);
 	y = 0;
 	while (y < i)
@@ -46,7 +47,8 @@ char	*clean_memory(char *memory)
 	y = ft_strlen(memory);
 	while (memory[i] && memory[i] != '\n')
 		i++;
-	if (!(cleanedmem = (char *)malloc(sizeof(char) * (y - i + 1))))
+	cleanedmem = (char *)malloc(sizeof(char) * (y - i + 1));
+	if (!(cleanedmem))
 		return (NULL);
 	y = 0;
 	while (memory[i])
@@ -60,15 +62,15 @@ char	*clean_memory(char *memory)
 	return (cleanedmem);
 }
 
-int		tofree(char *buff)
+int	tofree(char *buff)
 {
 	free(buff);
 	return (-1);
 }
 
-int		defr(char **line, int fd)
+int	defr(char **line, int fd)
 {
-	int r;
+	int	r;
 
 	if (!line || BUFFER_SIZE <= 0 || fd < 0)
 		r = -1;
@@ -77,14 +79,15 @@ int		defr(char **line, int fd)
 	return (r);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int				r;
 	char			*buff;
 	static char		*memory;
 
 	r = defr(line, fd);
-	if (r == -1 || !(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (r == -1 || !(buff))
 		return (-1);
 	while (!ft_strchr(memory, '\n') && r != 0)
 	{

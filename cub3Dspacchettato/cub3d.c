@@ -29,25 +29,25 @@ void	listinit(t_parse *parsing)
 {
 	parsing->resx = 0;
 	parsing->resy = 0;
-	parsing->NO = NULL;
-	parsing->SO = NULL;
-	parsing->WE = NULL;
-	parsing->EA = NULL;
-	parsing->S = NULL;
-	parsing->F = NULL;
-	parsing->C = NULL;
+	parsing->no = NULL;
+	parsing->so = NULL;
+	parsing->we = NULL;
+	parsing->ea = NULL;
+	parsing->s = NULL;
+	parsing->f = NULL;
+	parsing->c = NULL;
 	ft_colorinit(parsing->f_color);
 	ft_colorinit(parsing->c_color);
 	parsing->map = NULL;
 	parsing->n_line = 1;
 	parsing->check.resolution = 0;
-	parsing->check.NO = 0;
-	parsing->check.SO = 0;
-	parsing->check.WE = 0;
-	parsing->check.EA = 0;
-	parsing->check.S = 0;
-	parsing->check.F = 0;
-	parsing->check.C = 0;
+	parsing->check.no = 0;
+	parsing->check.so = 0;
+	parsing->check.we = 0;
+	parsing->check.ea = 0;
+	parsing->check.s = 0;
+	parsing->check.f = 0;
+	parsing->check.c = 0;
 }
 
 // void printstruct(t_parse *list)
@@ -529,11 +529,11 @@ void	init_window(t_win_data *win, t_parse *parsing)
 	win->resy = parsing->resy;
 	win->resolution.x_max = parsing->x_max;
 	win->resolution.n_line = parsing->n_line;
-	win->text[0].relative_path = parsing->WE;
-	win->text[1].relative_path = parsing->EA;
-	win->text[2].relative_path = parsing->NO;
-	win->text[3].relative_path = parsing->SO;
-	win->text[4].relative_path = parsing->S;
+	win->text[0].relative_path = parsing->we;
+	win->text[1].relative_path = parsing->ea;
+	win->text[2].relative_path = parsing->no;
+	win->text[3].relative_path = parsing->so;
+	win->text[4].relative_path = parsing->s;
 	win->color[0] = create_trgb(0, parsing->f_color[0], \
 	parsing->f_color[1], parsing->f_color[2]);
 	win->color[1] = create_trgb(0, parsing->c_color[0], \

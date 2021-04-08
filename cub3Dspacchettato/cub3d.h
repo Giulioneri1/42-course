@@ -150,26 +150,26 @@ typedef struct s_win_data
 typedef struct s_check
 {
 	int	resolution;
-	int	NO;
-	int	SO;
-	int	WE;
-	int	EA;
-	int	S;
-	int	F;
-	int	C;
+	int	no;
+	int	so;
+	int	we;
+	int	ea;
+	int	s;
+	int	f;
+	int	c;
 }				t_check;
 
 typedef struct s_parse
 {
 	int		resx;
 	int		resy;
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	char	*S;
-	char	*F;
-	char	*C;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*s;
+	char	*f;
+	char	*c;
 	int		f_color[3];
 	int		c_color[3];
 	char	**map;
@@ -196,13 +196,13 @@ void	ft_parsing_map(char **argv, t_parse *list);
 void	ft_checkparsing(t_parse *list, char *line);
 void	listinit(t_parse *list);
 void	set_res(t_parse *list, char *line, int i);
-int		set_texture_and_color_NO(t_parse *list, char *line, int i);
-int		set_texture_and_color_SO(t_parse *list, char *line, int i);
-int		set_texture_and_color_WE(t_parse *list, char *line, int i);
-int		set_texture_and_color_EA(t_parse *list, char *line, int i);
-int		set_texture_and_color_S(t_parse *list, char *line, int i);
-int		set_texture_and_color_F(t_parse *list, char *line, int i);
-int		set_texture_and_color_C(t_parse *list, char *line, int i);
+int		set_texture_and_color_no(t_parse *list, char *line, int i);
+int		set_texture_and_color_so(t_parse *list, char *line, int i);
+int		set_texture_and_color_we(t_parse *list, char *line, int i);
+int		set_texture_and_color_ea(t_parse *list, char *line, int i);
+int		set_texture_and_color_s(t_parse *list, char *line, int i);
+int		set_texture_and_color_f(t_parse *list, char *line, int i);
+int		set_texture_and_color_c(t_parse *list, char *line, int i);
 void	printstruct(t_parse *list);
 int		check_var(t_parse *list);
 int		check_emptyline(char *line, t_parse *list);

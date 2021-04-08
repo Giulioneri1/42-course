@@ -12,42 +12,40 @@
 
 #include "cub3d.h"
 
-
-int		create_trgb(int t, int r, int g, int b)
+int	create_trgb(int t, int r, int g, int b)
 {
-	return(t << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void my_mlx_pixel_put(t_img_data *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img_data *img, int x, int y, int color)
 {
-    char    *dst;
+	char	*dst;
 
-    dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-    *(unsigned int*)dst = color;
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
 void	my_mlx_pixel_put2(t_img_data *img, int x, int y, int color)
 {
-    char    *dst;
-	int h;
-	int l;
-	int i;
-    
+	char	*dst;
+	int		h;
+	int		l;
+	int		i;
+
 	h = 0;
 	l = 0;
-	while(h < img->size_pixel)
+	while (h < img->size_pixel)
 	{
 		l = 0;
 		i = 0;
-		while(l < img->size_pixel)
+		while (l < img->size_pixel)
 		{
 			dst = img->addr + (y * img->line_length + (x + i) * (img->bpp / 8));
-    		*(unsigned int*)dst = color;
+			*(unsigned int *)dst = color;
 			i++;
 			l++;
 		}
 		h++;
 		y++;
-	}
-	
+	}	
 }

@@ -12,9 +12,9 @@
 
 #include "cub3d.h"
 
-int		ft_strlen(char *line)
+int	ft_strlen(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!line)
@@ -24,9 +24,9 @@ int		ft_strlen(char *line)
 	return (i);
 }
 
-int		ft_strchr(char *line, char c)
+int	ft_strchr(char *line, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!line)
@@ -48,7 +48,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	x = ft_strlen(s1);
 	y = ft_strlen(s2);
-	if (!(newstr = (char *)malloc(sizeof(char) * (x + y + 1))))
+	newstr = (char *)malloc(sizeof(char) * (x + y + 1));
+	if (!(newstr))
 		return (NULL);
 	x = 0;
 	while (s1 && s1[x])
