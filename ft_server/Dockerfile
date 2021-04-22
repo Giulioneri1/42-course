@@ -14,14 +14,15 @@ FROM debian:buster
 
 RUN apt update 
 RUN apt upgrade -y
+RUN apt install -y vim
 RUN apt install -y wget
 RUN apt install -y nginx
 RUN apt install -y mariadb-server
 RUN apt install -y php7.3 php-mysql php-fpm php-pdo php-gd php-cli php-mbstring php-xml
 
-
-COPY /srcs/default /etc/nginx/sites-available
-COPY /srcs/index.nginx-debian.html /var/www/html
+COPY /srcs/default_autoindex_on /tmp
+COPY /srcs/default_autoindex_off /tmp
+COPY /srcs/index.html /var/www/html/index.nginx-debian.html
 COPY /srcs/style.css /var/www/html
 COPY /srcs/logo_white_small.png /var/www/html
 COPY /srcs/docker.png /var/www/html
@@ -45,9 +46,7 @@ RUN chmod -R 755 /var/www/*
 
 EXPOSE 80 443
 
-COPY /srcs/init.sh ./
-
-COPY /srcs/mysql.sh /
-RUN chmod +x mysql.sh
+COPY /srcs/*.sh ./
+RUN chmod +x mysql.sh autoindex.sh
 RUN sh /mysql.sh
 CMD bash init.sh

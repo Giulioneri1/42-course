@@ -69,6 +69,6 @@ ul li a:hover{
 
 .btn:hover{
     font-family: 'Roboto', sans-serif;
-    background-color: #fff;
+    background-color: rgb(25, 157, 180);
     color: #000;
 }
