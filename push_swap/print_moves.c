@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lastcheck.c                                        :+:      :+:    :+:   */
+/*   print_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:05:07 by gneri             #+#    #+#             */
-/*   Updated: 2021/05/18 15:05:08 by gneri            ###   ########.fr       */
+/*   Created: 2021/05/18 15:06:10 by gneri             #+#    #+#             */
+/*   Updated: 2021/05/18 15:06:11 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_lastcheck(t_stack *stacks)
+void	ft_samove(t_stack *stacks)
 {
-	int		num;
-	t_num	*head_a;
-	t_num	*head_b;
+	ft_sa(stacks);
+	ft_putstr("sa\n");
+}
 
-	head_a = stacks->stack_a;
-	head_b = stacks->stack_b;
-	stacks->head = 0;
-	if (head_b)
-	{
-		write(1, "KO\n", 3);
-		return ;
-	}
-	while (head_a->next)
-	{
-		num = head_a->number;
-		if (num > head_a->next->number)
-		{
-			write(1, "KO\n", 3);
-			return ;
-		}
-		head_a = head_a->next;
-	}
-	write(1, "OK\n", 3);
+void	ft_sbmove(t_stack *stacks)
+{
+	ft_sb(stacks);
+	ft_putstr("sb\n");
+}
+
+void	ft_rramove(t_stack *stacks)
+{
+	ft_rra(stacks);
+	ft_putstr("rra\n");
+}
+
+void	ft_rrrmove(t_stack *stacks)
+{
+	ft_rra(stacks);
+	ft_rrb(stacks);
+	ft_putstr("rrr\n");
+}
+
+void	ft_rrbmove(t_stack *stacks)
+{
+	ft_rrb(stacks);
+	ft_putstr("rrb\n");
 }

@@ -1,40 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lastcheck.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:05:07 by gneri             #+#    #+#             */
-/*   Updated: 2021/05/18 15:05:08 by gneri            ###   ########.fr       */
+/*   Created: 2021/05/18 15:05:00 by gneri             #+#    #+#             */
+/*   Updated: 2021/05/18 15:05:01 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_lastcheck(t_stack *stacks)
+void	ft_initcmd(t_stack *stacks)
 {
-	int		num;
 	t_num	*head_a;
 	t_num	*head_b;
 
 	head_a = stacks->stack_a;
 	head_b = stacks->stack_b;
-	stacks->head = 0;
-	if (head_b)
+	while (head_a)
 	{
-		write(1, "KO\n", 3);
-		return ;
-	}
-	while (head_a->next)
-	{
-		num = head_a->number;
-		if (num > head_a->next->number)
-		{
-			write(1, "KO\n", 3);
-			return ;
-		}
+		head_a->cmd = NULL;
 		head_a = head_a->next;
 	}
-	write(1, "OK\n", 3);
+	while (head_b)
+	{
+		head_b->cmd = NULL;
+		head_b = head_b->next;
+	}
+}
+
+void	ft_initflag(t_stack *stacks)
+{
+	t_num	*tmp;
+
+	tmp = stacks->stack_a;
+	while (tmp)
+	{
+		tmp->count = 0;
+		tmp->flag = 1;
+		tmp->sub_c = '0';
+		tmp->move = NULL;
+		tmp = tmp->next;
+	}
+	tmp = stacks->clone;
+	while (tmp)
+	{
+		tmp->count = 0;
+		tmp->flag = 1;
+		tmp->sub_c = '0';
+		tmp->move = NULL;
+		tmp = tmp->next;
+	}
 }

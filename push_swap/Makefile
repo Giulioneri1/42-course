@@ -12,21 +12,53 @@
 
 SRCS_C		=	checker.c \
 				checker_utils.c \
+				checker_utils2.c \
+				checker_utils3.c \
 				get_next_line.c \
 				moves.c \
+				moves2.c \
 				lastcheck.c \
-				hundredmoves.c \
+				big_numbers.c \
+				big_numbers2.c \
+				big_numbers3.c \
+				big_numbers4.c \
 				push_swap_utils.c \
-				threemoves.c \
+				three_numbers.c \
+				five_numbers.c \
+				lists_clean.c \
+				lists_utils.c \
+				lists_utils2.c \
+				lists_utils3.c \
+				init.c \
+				subsequence.c \
+				subsequence2.c \
+				print_moves.c \
+				print_moves2.c \
 				
 SRCS_P		=	checker_utils.c \
+				checker_utils2.c \
+				checker_utils3.c \
 				get_next_line.c \
 				moves.c \
+				moves2.c \
 				lastcheck.c \
 				push_swap.c \
 				push_swap_utils.c \
-				threemoves.c \
-				hundredmoves.c \
+				three_numbers.c \
+				five_numbers.c \
+				big_numbers.c \
+				big_numbers2.c \
+				big_numbers3.c \
+				big_numbers4.c \
+				print_moves.c \
+				print_moves2.c \
+				init.c \
+				subsequence.c \
+				subsequence2.c \
+				lists_clean.c \
+				lists_utils.c \
+				lists_utils2.c \
+				lists_utils3.c \
 				
 NAME_C		=	checker
 

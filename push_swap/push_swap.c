@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fulloa-s <fulloa-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gneri <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 11:55:56 by fulloa-s          #+#    #+#             */
-/*   Updated: 2021/05/13 17:33:17 by fulloa-s         ###   ########.fr       */
+/*   Created: 2021/05/18 15:06:26 by gneri             #+#    #+#             */
+/*   Updated: 2021/05/18 15:06:28 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@ int	main(int argc, char **argv)
 	stacks.stack_b = NULL;
 	if (argc < 2)
 		exit(0);
+	if (!argv[1][0])
+	{
+		ft_putstr("Error\n");
+		exit(0);
+	}
 	ft_parsing(argc, argv, &stacks);
 	ft_check_duplicate(&stacks);
 	ft_rightmove(&stacks);
 	ft_clean(&stacks.stack_a);
 	ft_clean(&stacks.stack_b);
-	ft_clean(&stacks.clone);
+	ft_clean_checker(&stacks.clone);
 }
