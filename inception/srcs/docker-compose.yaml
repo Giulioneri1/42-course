@@ -1,0 +1,81 @@
+version: '3'
+services:
+
+    nginx:
+        container_name: nginx
+        build:
+            context: ./containers/nginx
+            dockerfile: Dockerfile
+        volumes:
+            - /home/gneri/data/wp_data:/var/www/html
+        ports:
+            - 443:443
+        restart: unless-stopped
+        networks:
+            - my-net
+
+    mariadb:
+        container_name: mariadb
+        build:
+            context: ./containers/mariadb
+            dockerfile: Dockerfile
+        environment:
+            WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+            WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+            WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+            WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+            WORDPRESS_USER_LOGIN: ${WORDPRESS_USER_LOGIN}
+            WORDPRESS_USER_PASSWORD: ${WORDPRESS_USER_PASSWORD}
+            WORDPRESS_USER_EMAIL: ${WORDPRESS_USER_EMAIL}
+            ROOT_PASSWORD: ${ROOT_PASSWORD}
+        tty: true
+        volumes:
+            - /home/gneri/data/db_data:/var/lib/mysql
+        expose:
+            - 3306
+        restart: unless-stopped
+        networks:
+            - my-net
+        
+    wordpress:
+        container_name: wordpress
+        depends_on:
+            - mariadb
+        build:
+            context: ./containers/wordpress
+            dockerfile: Dockerfile
+        environment:
+            WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+            WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+            WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+            WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+            WORDPRESS_DB_EMAIL: ${WORDPRESS_DB_EMAIL}
+            WORDPRESS_DB_PATH: ${WORDPRESS_DB_PATH}
+            WORDPRESS_USER_LOGIN: ${WORDPRESS_USER_LOGIN}
+            WORDPRESS_USER_PASSWORD: ${WORDPRESS_USER_PASSWORD}
+            WORDPRESS_USER_EMAIL: ${WORDPRESS_USER_EMAIL}
+        tty: true
+        volumes:
+            - /home/gneri/data/wp_data:/var/www/html
+        expose:
+             - 9000
+        restart: unless-stopped
+        networks:
+            - my-net
+volumes:
+    db_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "home/gneri/data/"
+    wp_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "home/gneri/data/"
+networks:
+    my-net:
+        driver: bridge
+                    
