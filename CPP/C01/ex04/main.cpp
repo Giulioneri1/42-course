@@ -6,7 +6,7 @@
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:42:22 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/11 17:22:12 by gneri            ###   ########.fr       */
+/*   Updated: 2021/11/13 12:09:05 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		while (std::getline(input_file, str)) //CHECK EACH LINE UNTIL END OF FILE
 		{
             std::size_t found = 0;
-            while ((found = str.find(s1)) != std::string::npos) //CHECK IF THE STRING IS FOUND
+            while ((found = str.find(s1)) != std::string::npos && (s1 != s2)) //CHECK IF THE STRING IS FOUND
             {
                 str.erase(found, s1.length());
                 str.insert(found, s2);

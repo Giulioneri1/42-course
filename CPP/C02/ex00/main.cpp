@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:05:04 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 14:39:59 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/13 12:45:15 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/15 14:36:51 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-#define KAREN_HPP
+#include "Fixed.hpp"
 
-#include <iostream>
-#include <string>
-
-class Karen
+int main()
 {
-	private:
-		void	debug(); 
-		void	info();
-		void	warning();
-		void	error();
-	public:
-		Karen();
-		~Karen();
-		void	complain(std::string level);
-		
-};
-
-typedef	void	(Karen::*ptrToFun)();
-
-#endif
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
+	
+	c = b;
+	
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
+}

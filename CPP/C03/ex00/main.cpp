@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:05:04 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 14:39:59 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/16 17:08:28 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/17 12:32:42 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-#define KAREN_HPP
+#include "ClapTrap.hpp"
 
-#include <iostream>
-#include <string>
-
-class Karen
+int main()
 {
-	private:
-		void	debug(); 
-		void	info();
-		void	warning();
-		void	error();
-	public:
-		Karen();
-		~Karen();
-		void	complain(std::string level);
-		
-};
+	ClapTrap claptrap1("Giulio");
+	ClapTrap claptrap2("Fulloa");
 
-typedef	void	(Karen::*ptrToFun)();
-
-#endif
+	claptrap1.setAttackDamage(10);
+	attackReal(claptrap1, claptrap2);
+	claptrap2.beRepaired(4);
+	claptrap2.beRepaired(10);
+	claptrap2.beRepaired(6);
+	
+	claptrap1.attack("fulloa");
+	
+}

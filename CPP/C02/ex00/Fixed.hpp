@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:05:04 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 14:39:59 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/13 12:45:18 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/15 14:32:09 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-#define KAREN_HPP
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
 #include <iostream>
 #include <string>
 
-class Karen
+class Fixed
 {
 	private:
-		void	debug(); 
-		void	info();
-		void	warning();
-		void	error();
+		int fp_value;
+		static const int bits = 8;
 	public:
-		Karen();
-		~Karen();
-		void	complain(std::string level);
-		
+		Fixed();
+		~Fixed();
+		Fixed(const Fixed& copy);
+		int getRawBits(void) const; //return the raw value of fixed point value
+		void setRawBits(int const raw); //set the raw value of the fixed point value;
+		Fixed& operator = (const Fixed& copy);
 };
 
-typedef	void	(Karen::*ptrToFun)();
 
 #endif

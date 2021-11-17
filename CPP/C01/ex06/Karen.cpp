@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:04:58 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 15:18:23 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/12 15:19:30 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/12 15:54:27 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Karen.hpp"
 
-Karen::Karen(/* args */)
+Karen::Karen()
 {
 }
 
@@ -29,10 +29,29 @@ void	Karen::complain(std::string level)
 	comment[1] = &Karen::info;
 	comment[2] = &Karen::warning;
 	comment[3] = &Karen::error;
-	for (int i = 0; i < 4; i++)
-	{
+
+	int i = 0;
+	while (i++ < 4)
 		if (level == Complain[i])
+			break ;
+
+	switch (i)
+	{
+		case 0:
 			(this->*comment[i])();
+			break;
+		case 1:
+			(this->*comment[i])();
+			break;
+		case 2:
+			(this->*comment[i])();
+			break;
+		case 3:
+			(this->*comment[i])();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			break;
 	}
 }
 

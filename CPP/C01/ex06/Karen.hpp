@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:05:04 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 14:39:59 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/12 15:19:23 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/12 15:23:15 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,16 @@
 
 class Karen
 {
-	private:
-		void	debug(); 
-		void	info();
-		void	warning();
-		void	error();
-	public:
-		Karen();
-		~Karen();
-		void	complain(std::string level);
-		
+private:
+	void	debug();
+	void	info();
+	void	warning();
+	void	error();
+public:
+	Karen();
+	~Karen();
+	void	complain(std::string level);
 };
 
 typedef	void	(Karen::*ptrToFun)();
-
 #endif

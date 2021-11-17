@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:05:04 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 14:39:59 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/12 15:19:17 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/12 15:53:51 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-#define KAREN_HPP
+#include "Karen.hpp"
 
-#include <iostream>
-#include <string>
-
-class Karen
+int main(int argc, char **argv)
 {
-	private:
-		void	debug(); 
-		void	info();
-		void	warning();
-		void	error();
-	public:
-		Karen();
-		~Karen();
-		void	complain(std::string level);
-		
-};
+	if (argc == 2)
+	{
+		Karen karen;
 
-typedef	void	(Karen::*ptrToFun)();
-
-#endif
+		karen.complain(argv[1]);
+	}
+	else
+		std::cout << "Wrong number of arguments" << std::endl;	
+}

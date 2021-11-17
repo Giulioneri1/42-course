@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gneri <gneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:05:04 by gneri             #+#    #+#             */
-/*   Updated: 2021/11/12 14:39:59 by gneri            ###   ########.fr       */
+/*   Created: 2021/11/16 11:35:16 by gneri             #+#    #+#             */
+/*   Updated: 2021/11/16 17:02:30 by gneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-#define KAREN_HPP
+#include "Fixed.hpp"
 
-#include <iostream>
-#include <string>
-
-class Karen
+int main()
 {
-	private:
-		void	debug(); 
-		void	info();
-		void	warning();
-		void	error();
-	public:
-		Karen();
-		~Karen();
-		void	complain(std::string level);
-		
-};
+	Fixed  a;
+	Fixed  b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-typedef	void	(Karen::*ptrToFun)();
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 
-#endif
+	std::cout << b << std::endl;
+	
+	std::cout << Fixed::max( a, b ) << std::endl;
+}
