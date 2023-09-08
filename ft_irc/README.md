@@ -24,4 +24,3 @@ IRC connections.
   
 • password: The connection password. It will be needed by any IRC client that tries to connect to your server.
   
-  📌 Usage && More detailed information is contained in subject
